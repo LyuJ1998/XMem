@@ -104,7 +104,7 @@ class ResourceManager:
         cap = cv2.VideoCapture(video)
         frame_index = 0
         print(f'Extracting frames from {video} into {self.image_dir}...')
-        bar = progressbar.ProgressBar(max_value=progressbar.UnknownLength)
+        bar = progressbar.ProgressBar(progressbar.UnknownLength)
         while(cap.isOpened()):
             _, frame = cap.read()
             if frame is None:
@@ -164,7 +164,7 @@ class ResourceManager:
         # returns H*W*3 uint8 array
         assert 0 <= ti < self.length
 
-        image = Image.open(path.join(self.image_dir, self.names[ti]+'.jpg'))
+        image = Image.open(path.join(self.image_dir, self.names[ti]+'.png'))
         image = np.array(image)
         return image
 
